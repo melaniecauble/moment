@@ -4,7 +4,8 @@ addons:
   ssh_known_hosts: siteground324.com
 
 after_success:
-  # ssh deploy
-  - openssl aes-256-cbc -K $encrypted_0d3894087a6a_key -iv $encrypted_0d3894087a6a_iv -in id_rsa_a1-server.enc -out id_rsa_momentsforgrowth -d
+  # rsync deploy over ssh
+  - set -e
+  - openssl aes-256-cbc -K $encrypted_a54fd125a693_key -iv $encrypted_a54fd125a693_iv -in id_rsa_momentsforgrowth.enc -out id_rsa_momentsforgrowth -d
   - chmod 600 id_rsa_momentsforgrowth
   - cd www && rsync -avz -e "ssh -i id_rsa_momentsforgrowth -p 18765" --progress . yayfulli@siteground324.com:www/momentsforgrowth.com/moment
