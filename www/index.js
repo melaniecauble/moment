@@ -1,79 +1,78 @@
-var questionIndex = -1;
+$(function() {
 
-var startText = "Great job taking a moment for yourself!"
-  + "</br>Click through the next few prompts for being present to your environment.";
+  var questionIndex = -1;
+  var imageIndex = -1;
 
-var endText = "Take another deep breath, and then let it go."
-  + "</br>If you want, write down anything of note from this experience, and choose how you want to Be in this moment.";
+  var startText = null;
 
-var questions = [
-  // sights
-  [
-    "How many different colors can you see from where you are?",
-    "What subtle motions can you see around you?",
-    "What color can you see the most of in your current location?",
-    "Look for a detail in your environment you didn’t notice before."
-  ],
+  var endText = null;
 
-  // sounds
-  [
-    "What’s the quietest noise you can hear right now?",
-    "How many unique sounds can you hear?"
-  ],
+  var questions = null;
+  var images = null;
 
-  // touch
-  [
-    "What different temperatures can you feel on your skin?",
-    "Can you feel air moving around you? What direction is it going?",
-    "Describe the texture of an object within your reach (item of clothing, piece of furniture, bark of a tree, etc)"
-  ],
+  $.getJSON('data.json', function(data) {
+    questions = data.questions;
+    images = data.images;
+    startText = data.start;
+    endText = data.end;
 
-  // internals
-  [
-    "Listen closely and see if you can notice your own heart beat. Are you hearing it? Feeling it?",
-    "Where do you notice any tensions in your body? Can you relax them?",
-    "Notice the pace of your breathing.",
-    "How many thoughts are moving around in your head right now?",
-    "What emotions are present within you in this moment?",
-    "How deeply are you breathing?",
-    "Bring attention to your current posture. What does it say?",
-    "What compliment can you give yourself right now?",
-    "How relaxed are you? What can you do to increase your level of relaxation in this moment?"
-  ]
-];
+    init();
+  });
 
-function getCueCard() {
-  questionIndex++;
+  var showNextQuestion = function() {
+    if (!questions) return;
 
-  if (questionIndex >= questions.length) {
-    end();
-    return;
-  } else {
-    var questionArray = questions[questionIndex];
-    var index = Math.floor((Math.random() * questionArray.length));
-    var text = questionArray[index];
-  }
+    questionIndex++;
 
-  document.getElementById("card").innerHTML = text;
-}
+    if (questionIndex >= questions.length) {
+      end();
+      return;
+    } else {
+      var questionArray = questions[questionIndex];
+      var index = Math.floor((Math.random() * questionArray.length));
+      var text = questionArray[index];
+    }
 
-function init() {
-  document.getElementById("card").innerHTML = startText;
-}
+    setText(text);
+  };
 
-function end() {
-  document.getElementById("card").innerHTML = endText;
-  document.getElementById("button").style.display = "none";
-  document.getElementById("restart").style.display = "inline";
-  document.getElementById("feedback").style.display = "inline";
-}
+  var init = function() {
+    setText(startText);
 
-function restart() {
-  questionIndex = -1;
-  document.getElementById("button").innerHTML = "Next";
-  document.getElementById("button").style.display = "inline";
-  document.getElementById("restart").style.display = "none";
-  document.getElementById("feedback").style.display = "none";
-  
-  getCueCard();
-}
+    showNextImage();
+
+    $("#image").bind("click", showNextQuestion);
+    $("#next").bind("click", showNextQuestion);
+    $("#restart").bind("click", restart);
+  };
+
+  var end = function() {
+    setText(endText);
+    $("#button").css("display", "none");
+    $("#restart").css("display", "inline");
+    $("#feedback").css("display", "inline");
+    $("#next").css("display", "none");
+  };
+
+  var restart = function() {
+    questionIndex = -1;
+    $("#button").html("Next");
+    $("#button").css("display", "inline");
+    $("#restart").css("display", "none");
+    $("#feedback").css("display", "none");
+    $("#next").css("display", "inline");
+
+    showNextImage();
+
+    showNextQuestion();
+  };
+
+  var setText = function(text) {
+    $("#card").html(text.replace(/\n/, "<br>"));
+  };
+
+  var showNextImage = function() {
+    imageIndex = (imageIndex + 1) % images.length;
+    $("#image").attr("src", images[imageIndex]);
+  };
+});

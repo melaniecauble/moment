@@ -1,0 +1,41 @@
+{
+  "images": [
+    "moment0.jpg",
+    "moment1.jpg",
+    "moment2.jpg",
+    "moment3.jpg"
+  ],
+
+  "start": "Great job taking a moment for yourself!\nClick through the next few prompts for being present to your environment.",
+  
+  "end": "Take another deep breath, and then let it go.\nIf you want, write down anything of note from this experience, and choose how you want to Be in this moment.",
+
+  "questions": [
+    [
+      "How many different colors can you see from where you are?",
+      "What subtle motions can you see around you?",
+      "What color can you see the most of in your current location?",
+      "Look for a detail in your environment you didn’t notice before."
+    ],
+    [
+      "What’s the quietest noise you can hear right now?",
+      "How many unique sounds can you hear?"
+    ],
+    [
+      "What different temperatures can you feel on your skin?",
+      "Can you feel air moving around you? What direction is it going?",
+      "Describe the texture of an object within your reach (item of clothing, piece of furniture, bark of a tree, etc)"
+    ],
+    [
+      "Listen closely and see if you can notice your own heart beat. Are you hearing it? Feeling it?",
+      "Where do you notice any tensions in your body? Can you relax them?",
+      "Notice the pace of your breathing.",
+      "How many thoughts are moving around in your head right now?",
+      "What emotions are present within you in this moment?",
+      "How deeply are you breathing?",
+      "Bring attention to your current posture. What does it say?",
+      "What compliment can you give yourself right now?",
+      "How relaxed are you? What can you do to increase your level of relaxation in this moment?"
+    ]
+  ]
+}
