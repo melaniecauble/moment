@@ -8,84 +8,8 @@
 
 
 
-<script type="text/javascript">  
-      var cnt = -1;
-      var end = "Take another deep breath, and then let it go. </br> If you want, write down anything of note from this experience, and choose how you want to Be in this moment."
-      var sightCat1 = "How many different colors can you see from where you are?"
-      var sightCat2 = "What subtle motions can you see around you?"
-      var sightCat3 = "What color can you see the most of in your current location?"
-      var sightCat4 = "Look for a detail in your environment you didn’t notice before."
+<script type="text/javascript" src="index.js"></script>
 
-      var soundCat1 = "What’s the quietest noise you can hear right now?"
-      var soundCat2 = "How many unique sounds can you hear?"
-
-      var touchCat1 = "What different temperatures can you feel on your skin?"
-      var touchCat2 = "Can you feel air moving around you? What direction is it going?"
-      var touchCat3 = "Describe the texture of an object within your reach (item of clothing, piece of furniture, bark of a tree, etc)"
-
-      var internalCat1 = "Listen closely and see if you can notice your own heart beat. Are you hearing it? Feeling it?"
-      var internalCat2 = "Where do you notice any tensions in your body? Can you relax them?"
-      var internalCat3 = "Notice the pace of your breathing."
-      var internalCat4 = "How many thoughts are moving around in your head right now?"
-      var internalCat5 = "What emotions are present within you in this moment?"
-      var internalCat6 = "How deeply are you breathing?"
-      var internalCat7 = "Bring attention to your current posture. What does it say?"
-      var internalCat8 = "What compliment can you give yourself right now?"
-      var internalCat9 = "How relaxed are you? What can you do to increase your level of relaxation in this moment?"
-
-      
-
-      var sights = [sightCat1, sightCat2, sightCat3, sightCat4]
-      var sounds = [soundCat1, soundCat2]
-      var touch = [touchCat1, touchCat2, touchCat3]
-      var internals = [internalCat1, internalCat2, internalCat3, internalCat4, internalCat5, internalCat6, internalCat7, internalCat8, internalCat9]
-
-      var categories = ["sights", "sounds", "touch", "internals"]
-
-function getCueCard() {  
-      cnt++      
-      if (cnt > 3) {
-        document.getElementById("card").innerHTML = end
-        document.getElementById("button").style.display = "none"
-        document.getElementById("restart").style.display = "inline"   
-        document.getElementById("feedback").style.display = "inline"         
-        return
-      }
-      switch (categories[cnt]) {
-
-        case "sights":
-              index =  Math.floor(((Math.random() * 10) % sights.length));
-              text = sights[index]            
-              break;
-        case "sounds":
-              index = Math.floor(((Math.random() * 10) % sounds.length));
-              text = sounds[index]              
-              break;
-        case "touch":
-              index = Math.floor(((Math.random() * 10) % touch.length));
-              text = touch[index]              
-              break;
-        case "internals":
-              index = Math.floor(((Math.random() * 10) % internals.length));
-              text = internals[index]              
-              break; 
-        default:
-              text = end
-      }
-      
-      document.getElementById("card").innerHTML = text            
-  }
-  function restart() {
-    cnt = -1;
-    document.getElementById("button").innerHTML = "Next"             
-    document.getElementById("button").style.display = "inline"             
-    document.getElementById("restart").style.display = "none" 
-    document.getElementById("feedback").style.display = "none"     
-    getCueCard()    
-  }
-  function home() {
-  }
-</script>  
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -95,31 +19,29 @@ function getCueCard() {
 
   ga('create', 'UA-66355262-1', 'auto');
   ga('send', 'pageview');
-
 </script>
 </head>
-<body>
+<body onload="init()" style="cursor: pointer; color: white; font-size: 5vh; text-shadow: 1px 1px black">
 
-<!--div class="w3-container w3-center"-->
+<div style="text-align: center;">
+  <div>
+    <img src="moment.jpg" onclick="getCueCard()" style="width:100%; height:100%">
 
+    <div style="position: absolute; top: 0; margin: 20% 10%;">
+      <span id="card"></span>
+    </div>
 
-<div class="w3-container w3-center">
-  <div class="w3-display-container w3-text-white">
-  <img src="moment.jpg" alt="Dusk" onClick=getCueCard() style="width:100%;height:100%">
-  <div class="w3-display-topmiddle w3-medium "></br></br><span id="card" class="w3-large">Great job taking a moment for yourself! </br>
-  Click through the next few prompts for being present to your environment.</span></div>
+    <button id="button" onclick="getCueCard()" style="margin-bottom: 1%;" class="w3-display-bottommiddle w3-btn w3-round-large">Next</button> 
+    <button id="restart" onclick="restart()" style="margin: 1%; display: none;" class="w3-display-bottomleft w3-btn w3-round-large w3-blue">Restart</button>
+    <a href="http://www.momentsforgrowth.com" style="margin-left: 1%; margin-top: 1%; text-decoration: none;" class="w3-display-topleft">Home</a>
+    <button onclick="window.top.location = 'mailto:melanie@momentsforgrowth.com'" id="feedback" style="z-index:1; margin: 1%; display: none;" class="w3-display-bottomright w3-btn w3-round-large w3-blue">Feedback</submit>
 
-    <button id="button" onClick=getCueCard() class="w3-display-bottommiddle w3-btn w3-small w3-round-large">Next</button> 
-    <button id="restart" onClick=restart() style="display: none" class="w3-display-bottomleft w3-btn w3-small w3-round-large w3-blue">Restart</button>
-    <a href="http://www.momentsforgrowth.com" class="w3-display-topleft w3-text-white">Home</a>
-    <button onclick="window.top.location = 'mailto:melanie@momentsforgrowth.com'" id="feedback" style="z-index:1; display: none;" class="w3-display-bottomright w3-btn w3-small w3-round-large w3-blue">Feedback</submit>
- 
-</div>
-<!--
-<footer class="w3-container w3-blue">
-  <h5>Copyright &copy; 2016 Melanie Cauble</h5>
-</footer>
--->
+  </div>
+  <!--
+  <footer class="w3-container w3-blue">
+    <h5>Copyright &copy; 2016 Melanie Cauble</h5>
+  </footer>
+  -->
 </div>
 
 </body>
