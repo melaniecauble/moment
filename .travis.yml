@@ -1,11 +1,11 @@
 language: generic
 
 addons:
-  ssh_known_hosts: siteground324.com
+  ssh_known_hosts: siteground324.com:18765
 
 after_success:
   # rsync deploy over ssh
   - set -e
   - openssl aes-256-cbc -K $encrypted_a54fd125a693_key -iv $encrypted_a54fd125a693_iv -in id_rsa_momentsforgrowth.enc -out id_rsa_momentsforgrowth -d
   - chmod 600 id_rsa_momentsforgrowth
-  - cd www && rsync -avz -e "ssh -i id_rsa_momentsforgrowth -p 18765" --progress . yayfulli@siteground324.com:www/momentsforgrowth.com/moment
+  - rsync -avz -e "ssh -i id_rsa_momentsforgrowth -p 18765" --progress www yayfulli@siteground324.com:www/momentsforgrowth.com/moment
