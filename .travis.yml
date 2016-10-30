@@ -6,6 +6,8 @@ addons:
 after_success:
   # rsync deploy over ssh
   - set -e
-  - openssl aes-256-cbc -K $encrypted_a54fd125a693_key -iv $encrypted_a54fd125a693_iv -in id_rsa_momentsforgrowth.enc -out id_rsa_momentsforgrowth -d
-  - chmod 600 id_rsa_momentsforgrowth
-  - rsync -avz -e "ssh -i id_rsa_momentsforgrowth -p 18765" --progress www yayfulli@siteground324.com:www/momentsforgrowth.com/moment
+  - openssl aes-256-cbc -K $encrypted_a54fd125a693_key -iv $encrypted_a54fd125a693_iv -in id_rsa_momentsforgrowth.enc -out "${TRAVIS_BUILD_DIR}/id_rsa_a1-server" -d
+  - eval "$(ssh-agent -s)"
+  - chmod 600 "${TRAVIS_BUILD_DIR}/id_rsa_a1-server"
+  - ssh-add "${TRAVIS_BUILD_DIR}/id_rsa_a1-server"
+  - rsync -avz -e "ssh -p 18765" --progress www yayfulli@siteground324.com:www/momentsforgrowth.com/moment
