@@ -6,14 +6,14 @@ addons:
 before_deploy:
   # rsync deploy over ssh
   - set -e
-  - openssl aes-256-cbc -K $encrypted_a54fd125a693_key -iv $encrypted_a54fd125a693_iv -in id_rsa_momentsforgrowth.enc -out /tmp/id_rsa_momentsforgrowth -d
+  - openssl aes-256-cbc -K $encrypted_a54fd125a693_key -iv $encrypted_a54fd125a693_iv -in id_rsa_momentsforgrowth_deploy.enc -out /tmp/id_rsa_momentsforgrowth_deploy -d
   - eval "$(ssh-agent -s)"
-  - chmod 600 /tmp/id_rsa_momentsforgrowth
-  - ssh-add /tmp/id_rsa_momentsforgrowth
+  - chmod 600 /tmp/id_rsa_momentsforgrowth_deploy
+  - ssh-add /tmp/id_rsa_momentsforgrowth_deploy
 
 deploy:
   provider: script
   skip_cleanup: true
-  script: rsync -avz -e "ssh -p 18765" --progress www yayfulli@siteground324.com:www/momentsforgrowth.com/moment
+  script: rsync -r --delete-after -e "ssh -p 18765" --progress www yayfulli@siteground324.com:www/momentsforgrowth.com/moment
   on:
     branch: master
