@@ -14,6 +14,6 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: rsync -r --delete-after -e "ssh -p 18765" --progress www yayfulli@siteground324.com:www/momentsforgrowth.com/moment
+  script: cd www && rsync -r --delete-after -e "ssh -p 18765" --progress . yayfulli@siteground324.com:www/momentsforgrowth.com/moment
   on:
     branch: master
