@@ -69,7 +69,7 @@ $(function() {
   };
 
   var setText = function(text) {
-    $("#card").html(text.replace(/\\n/, "<br>"));
+    $("#card").html(text.replace(/\n/, "<br>"));
   };
 
   var showNextImage = function() {
