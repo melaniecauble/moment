@@ -1,0 +1,37 @@
+{
+  "images": [
+    "moment0.jpg",
+    "moment1.jpg",
+    "moment2.jpg",
+    "moment3.jpg"
+  ],
+
+  "start": "It’s time to eat! Let’s take a moment to appreciate your meal before you start.",
+  
+  "end": "Research shows mindful eating can increase meal satisfaction while helping some people lose weight. Take your time, using some of the below tips if you like.<ul><li>Eat without picking up your phone.</li><li>Put your utensil/food down in between bites.</li><li>Chew thoroughly until the bite has a consistent texture throughout.</li><li>Enjoy each stage, each bite, instead of rushing to get to the next bite.</ul>Bon Apetit!",
+
+  "questions": [
+    [
+      "What do you notice as you smell the food?",
+      "How many different colors are in your meal?",
+      "How visually appealing is your dish?"
+    ],
+    [
+      "What variety of textures do you expect?",
+      "Does it look like enough, or too much food? If too much, see if you can mentally set aside some to be leftovers."
+    ],
+    [
+      "What food groups are included on your plate?",
+      "Is this finger food, does it require utensils, or is it something on-the-go eaten out of the package?",
+      "Why did you choose the food that you did? How do you feel about your choice?"
+    ],
+    [
+      "How much time went into preparing this meal? By you, or others? Include thoughts about the efforts of the farmer, how long the ingredients took to grow.",
+      "Does what you see bring you joy? How do you feel about what you’re about to eat? If you are not satisfied, why not?",      "Do you consider the choice healthy? Why?",
+ "What do you appreciate about your meal?",
+      "Choose the first bite to taste. Let it sit on your tongue. Notice if the taste changes, notice its texture."
+    ]
+  ]
+}
+
+     

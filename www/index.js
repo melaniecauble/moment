@@ -10,7 +10,8 @@ $(function() {
   var questions = null;
   var images = null;
 
-  $.getJSON('data.json', function(data) {
+  var jsonFile = ((location.search).substr(1) || 'data') + '.json';
+  $.getJSON(jsonFile, function(data) {
     questions = data.questions;
     images = data.images;
     startText = data.start;
@@ -68,7 +69,7 @@ $(function() {
   };
 
   var setText = function(text) {
-    $("#card").html(text.replace(/\n/, "<br>"));
+    $("#card").html(text.replace(/\\n/, "<br>"));
   };
 
   var showNextImage = function() {
