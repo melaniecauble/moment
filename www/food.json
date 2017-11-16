@@ -4,7 +4,7 @@
 		"src": "plate.jpg",
 		"imageCSS": {"height": "100%"},
 		"bodyCSS": {"background-color": "#655", "color": "black", "text-shadow": "1px 1px white"},
-		"cardCSS": {"padding": "0 30%"}
+		"cardCSS": {"font-size": "4vh"}
     }
   ],
 
