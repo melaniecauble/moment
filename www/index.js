@@ -10,7 +10,10 @@ $(function() {
   var questions = null;
   var images = null;
 
-  var jsonFile = ((location.search).substr(1) || 'data') + '.json';
+  var category = (location.search).substr(1) || 'data';
+  $("#body-wrapper").addClass(category);
+
+  var jsonFile = category + '.json';
   $.getJSON(jsonFile, function(data) {
     questions = data.questions;
     images = data.images;
@@ -43,6 +46,7 @@ $(function() {
     showNextImage();
 
     $("#image").bind("click", showNextQuestion);
+    $("#card").bind("click", showNextQuestion);
     $("#next").bind("click", showNextQuestion);
     $("#restart").bind("click", restart);
   };
@@ -74,6 +78,24 @@ $(function() {
 
   var showNextImage = function() {
     imageIndex = (imageIndex + 1) % images.length;
-    $("#image").attr("src", images[imageIndex]);
+    var imageObj = images[imageIndex]
+    
+    // if it's a string, make it compatible
+    if (typeof(imageObj) == "string") {
+      imageObj = {"src": imageObj};
+    }
+
+    // apply image source
+    $("#image").attr("src", imageObj.src);
+    
+    // reset styles
+    $("body")[0].style = '';
+    $("#card")[0].style = '';
+    $("#image")[0].style = '';
+    
+    // apply styles
+    $("body").css(imageObj.bodyCSS || {});
+    $("#card").css(imageObj.cardCSS || {});
+    $("#image").css(imageObj.imageCSS || { "width": "100%", "height": "100%" });
   };
 });
