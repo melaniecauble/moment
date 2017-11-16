@@ -4,13 +4,13 @@
 		"src": "plate.jpg",
 		"imageCSS": {"height": "100%"},
 		"bodyCSS": {"background-color": "#655", "color": "black", "text-shadow": "1px 1px white"},
-		"cardCSS": {"font-size": "4vh"}
+		"cardCSS": {"font-size": "5vh", "padding": "25% 0 0 0"}
     }
   ],
 
   "start": "It’s time to eat! Let’s take a moment to appreciate your meal before you start.",
   
-  "end": "Research shows mindful eating can increase meal satisfaction while helping some people lose weight. Take your time, using some of the below tips if you like.<ul><li>Eat without picking up your phone.</li><li>Put your utensil/food down in between bites.</li><li>Chew thoroughly until the bite has a consistent texture throughout.</li><li>Enjoy each stage, each bite, instead of rushing to get to the next bite.</ul>Bon Apetit!",
+  "end": "Bon Apetit!",
 
   "questions": [
     [
@@ -33,6 +33,21 @@
       "Does what you see bring you joy? How do you feel about what you’re about to eat? If you are not satisfied, why not?",      "Do you consider the choice healthy? Why?",
  "What do you appreciate about your meal?",
       "Choose the first bite to taste. Let it sit on your tongue. Notice if the taste changes, notice its texture."
+    ],
+    [
+    	"Research shows mindful eating can increase meal satisfaction while helping some people lose weight. Take your time, using some of the following tips if you like."
+    ],
+    [
+    	"TIP: Eat without picking up your phone."
+    ],
+    [
+    	"TIP: Put your utensil/food down in between bites."
+    ],
+    [
+    	"TIP: Chew thoroughly until the bite has a consistent texture throughout."
+    ],
+    [
+    	"TIP: Enjoy each stage, each bite, instead of rushing to get to the next bite."
     ]
   ]
 }
